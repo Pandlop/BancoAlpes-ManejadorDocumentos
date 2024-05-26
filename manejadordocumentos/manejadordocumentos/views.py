@@ -41,7 +41,7 @@ def landingPage(request):
 
 @csrf_exempt
 def healthCheck(request):
-    return JsonResponse({"message": "ok"}, status=200)
+    return HttpResponse("ok")
 
 @csrf_exempt
 def indexDocumentos(request):
