@@ -30,6 +30,5 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('documentos/', include('documentos.urls')),
-    path('landingPage/', include('landing.urls')),
     path('health-check/', views.healthCheck),
 ]
