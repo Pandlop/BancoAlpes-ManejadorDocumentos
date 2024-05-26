@@ -229,22 +229,6 @@ def list_docs_id(request,docId):
         documentoCarga = serializers.serialize('json', [documentoCarga_dto,])
         return HttpResponse(documentoCarga, 'application/json')
 
-@token_required
-@csrf_exempt
-# Funcion para la pagina de inicio de los documentos
-def indexDocumentos(request):
-    return render(request, 'indexDocumentos.html')
-
-    # if not requests.session.get("user_token"):
-    #     return redirect() #URL bancoinstancia
-    # else:
-    #     autenticado = requests.request("GET", "35.186.252.174:80/user/is_authenticated?token=" + requests.session.get("user_token"))
-
-    #     if autenticado:
-    #         return render(request, 'indexDocumentos.html')
-    #     else:
-    #         return redirect()
-
 @csrf_exempt
 # Funcion para asignar un score a un documento con el api de google
 def asignarScoreG(instancia, tipoDoc, lock):

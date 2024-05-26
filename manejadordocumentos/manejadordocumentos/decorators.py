@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def token_required(view_func):
+    @csrf_exempt
     def _wrapped_view_func(request, *args, **kwargs):
         hallado = "user_token" in request.session
         print("hallado:" + hallado)
