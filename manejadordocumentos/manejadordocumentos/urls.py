@@ -21,8 +21,6 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.landingPage, name='landingPage'),
-
     #Llave publica servidor
     path('llave_publica_servidor/', views.llavePublica, name="llavePublica"),
 
