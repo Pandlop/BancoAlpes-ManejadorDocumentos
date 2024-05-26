@@ -34,6 +34,9 @@ import hashlib
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "documentos/keys/bancoalpes-417404-9b703b711492.json"
 
+@csrf_exempt
+def healthCheck(request):
+    return JsonResponse({"message": "ok"}, status=200)
 
 @csrf_exempt
 def file_list(request):
