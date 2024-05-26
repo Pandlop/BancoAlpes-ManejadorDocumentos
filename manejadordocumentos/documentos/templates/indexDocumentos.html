@@ -37,8 +37,19 @@
         <div>
             <a href="">TDC</a>
             <a href="/documentos/documentosCarga">Cargar Documentos</a>
-            
-            {% if loggeado %}
+            <a href="">Firmar</a>
+        </div>
+        
+    </nav>
+
+    <div>
+        <h1>Bienvenido a Banco Alpes</h1>
+        <p>Adjunta tus documentos</p>
+    </div>
+
+    <div class="contenedor_boton">
+        <a href="/documentos/documentosCarga"><button class="rounded-button">Adjuntar documentos</button></a>
+        {% if loggeado %}
             <script>
               function logout(){
                 let token = "{{ token }}";
@@ -57,19 +68,6 @@
             </script>
             <a onclick="logout()">Logout</a>
             {% endif % }
-
-            <a href="">Firmar</a>
-        </div>
-        
-    </nav>
-
-    <div>
-        <h1>Bienvenido a Banco Alpes</h1>
-        <p>Adjunta tus documentos</p>
-    </div>
-
-    <div class="contenedor_boton">
-        <a href="/documentos/documentosCarga"><button class="rounded-button">Adjuntar documentos</button></a>
       </div>
     
     
