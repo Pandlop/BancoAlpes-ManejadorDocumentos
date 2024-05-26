@@ -11,7 +11,7 @@ def token_required(view_func):
         if not hallado:
             return redirect()
         else:
-            response = requests.get("http://34.49.65.40:80/user/is_authenticated", headers=request.session["user_token"])
+            response = requests.get("http://35.190.51.156:8082/user/is_authenticated", headers=request.session["user_token"])
             print(response.text)
         return view_func(request, *args, **kwargs)
     return _wrapped_view_func
