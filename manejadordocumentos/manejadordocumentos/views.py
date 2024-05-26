@@ -55,7 +55,7 @@ def indexDocumentos(request):
         if token:
             request.session["user_token"] = token
             print("token get: " +request.session["user_token"])
-            return render(request, 'indexDocumentos.html')
+            return render(request, 'indexDocumentos.html', context={"loggeado": True, "token": token})
         else:
             return JsonResponse({"error": "Token not found"}, status=400)
         

@@ -37,6 +37,27 @@
         <div>
             <a href="">TDC</a>
             <a href="/documentos/documentosCarga">Cargar Documentos</a>
+            
+            {% if loggeado %}
+            <script>
+              function logout(){
+                let token = "{{ token }}";
+                let logoutUrl = "http://35.190.51.156:8082/user/logout?token=" + token;
+                let redirectUrl = "http://35.184.109.166:8080/loginPage"
+                fetch(logoutUrl, {
+                  method: "GET"
+                })
+                .then(response => {
+                  window.location.href = redirectUrl;
+                })
+                .then(data => console.log(data))
+                .catch(error => console.log(error))
+              }
+
+            </script>
+            <a onclick="logout()">Logout</a>
+            {% endif % }
+
             <a href="">Firmar</a>
         </div>
         
