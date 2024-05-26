@@ -22,7 +22,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import serialization
-from .decorators import token_required
 
 
 #Llave publica
