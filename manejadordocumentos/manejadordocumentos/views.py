@@ -39,7 +39,7 @@ def llavePublica(request):
 def healthCheck(request):
     return JsonResponse({"status": "ok"}, status=200)
 
-@token_required
+# @token_required
 @csrf_exempt
 def indexDocumentos(request):
     if request.method == "POST":
