@@ -43,11 +43,6 @@ def file_list(request):
 @csrf_exempt
 @token_required
 def list_docs(request):
-
-    response = request.get("", data={request.session["user_token"]})
-
-    if response.text == "error":
-        return redirect("login")
     
     docsExitosos = False
 
