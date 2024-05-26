@@ -36,10 +36,6 @@ def llavePublica(request):
 
 
 @csrf_exempt
-def landingPage(request):
-    return render(request, 'landingPage.html')
-
-@csrf_exempt
 def healthCheck(request):
     return JsonResponse({"status": "ok"}, status=200)
 
