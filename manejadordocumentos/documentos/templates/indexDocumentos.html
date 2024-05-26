@@ -50,24 +50,25 @@
     <div class="contenedor_boton">
         <a href="/documentos/documentosCarga"><button class="rounded-button">Adjuntar documentos</button></a>
         {% if loggeado %}
-            <script>
-              function logout(){
-                let token = "{{ token }}";
-                let logoutUrl = "http://35.190.51.156:8082/user/logout?token=" + token;
-                let redirectUrl = "http://35.184.109.166:8080/loginPage"
-                fetch(logoutUrl, {
-                  method: "GET"
-                })
-                .then(response => {
-                  window.location.href = redirectUrl;
-                })
-                .then(data => console.log(data))
-                .catch(error => console.log(error))
-              }
+        <script>
+          function logout(){
+            let token = "{{ token }}";
+              let logoutUrl = "http://35.190.51.156:8082/user/logout?token=" + token;
+              let redirectUrl = "http://35.184.109.166:8080/loginPage"
+              fetch(logoutUrl, {
+                method: "GET"
+              })
+              .then(response => {
+                window.location.href = redirectUrl;
+              })
+              .then(data => console.log(data))
+              .catch(error => console.log(error))
+          }
 
-            </script>
-            <a onclick="logout()">Logout</a>
-          {% endif % }
+        </script>
+        <a onclick="logout()">Logout</a>
+        {% else %}
+        {% endif %}
       </div>
     
     
