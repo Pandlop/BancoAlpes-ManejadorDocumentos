@@ -20,7 +20,7 @@ from django.shortcuts import render, redirect
 
 from django.core.mail import send_mail
 from django.conf import settings
-
+from .decorators import token_required
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import serialization
 
@@ -39,6 +39,7 @@ def llavePublica(request):
 def healthCheck(request):
     return JsonResponse({"status": "ok"}, status=200)
 
+@token_required
 @csrf_exempt
 def indexDocumentos(request):
     if request.method == "POST":
