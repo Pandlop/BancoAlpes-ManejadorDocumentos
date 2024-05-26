@@ -7,9 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 def token_required(view_func):
     @csrf_exempt
     def _wrapped_view_func(request, *args, **kwargs):
-        hallado = "user_token" in request.session
-        print(hallado)
-        if not hallado:
+        print(request.session["user_token"])
+        if not request.session["user_token"]:
             return redirect()
         else:
             response = requests.get("http://35.190.51.156:8082/user/is_authenticated", headers=request.session["user_token"])
