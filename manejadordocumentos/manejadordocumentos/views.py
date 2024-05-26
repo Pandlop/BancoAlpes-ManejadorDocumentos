@@ -41,6 +41,10 @@ def healthCheck(request):
 
 @csrf_exempt
 def indexDocumentos(request):
-    return render(request, 'indexDocumentos.html')
+    if request.method == "POST":
+        print(request.POST)
+        # request.session["user_token"] = request.POST["token"]
+    else:
+        return render(request, 'indexDocumentos.html')
 
 
