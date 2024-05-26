@@ -42,9 +42,15 @@ def healthCheck(request):
 @csrf_exempt
 def indexDocumentos(request):
     if request.method == "POST":
-        print(request.body.get("token"))
+        body = json.loads(request.body)
+        token = body.get("token")
+        if token:
+                print("Token:", token)
+                # request.session["user_token"] = token
+                return HttpResponse("cargo")
+        else:
+            return JsonResponse({"error": "Token not found"}, status=400)
         # request.session["user_token"] = request.POST["token"]
-        return HttpResponse("cargo")
     else:
         return render(request, 'indexDocumentos.html')
 
