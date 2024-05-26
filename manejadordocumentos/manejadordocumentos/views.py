@@ -51,8 +51,14 @@ def indexDocumentos(request):
             return HttpResponse(status=200)
         else:
             return JsonResponse({"error": "Token not found"}, status=400)
-    else:
-        print("token get: " + request.session["user_token"])
-        return render(request, 'indexDocumentos.html')
+    elif request.method == "GET":
+        token = request.GET.get("token")
+        if token:
+            request.session["user_token"] = token
+            print("token get: " +request.session["user_token"])
+            return render(request, 'indexDocumentos.html')
+        else:
+            return JsonResponse({"error": "Token not found"}, status=400)
+        
 
 
