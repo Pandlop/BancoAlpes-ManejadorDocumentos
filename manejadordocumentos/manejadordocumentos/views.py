@@ -45,9 +45,8 @@ def indexDocumentos(request):
         body = json.loads(request.body)
         token = body.get("token")
         if token:
-            print("Token:", token)
-            # request.session["user_token"] = token
-            return HttpResponse("cargo")
+            request.session["user_token"] = token
+            return HttpResponse({"token": token}, status=200)
         else:
             return JsonResponse({"error": "Token not found"}, status=400)
         # request.session["user_token"] = request.POST["token"]

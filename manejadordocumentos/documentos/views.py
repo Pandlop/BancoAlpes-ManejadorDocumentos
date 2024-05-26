@@ -29,7 +29,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 import json
 import hashlib
-
+from .decorators import token_required
 
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "documentos/keys/bancoalpes-417404-9b703b711492.json"
@@ -41,7 +41,13 @@ def file_list(request):
 
 
 @csrf_exempt
+@token_required
 def list_docs(request):
+
+    response = request.get("", data={request.session["user_token"]})
+
+    if response.text == "error":
+        return redirect("login")
     
     docsExitosos = False
 
@@ -203,7 +209,9 @@ def list_docs(request):
         documentos_subidos = DocumentoCarga.objects.all()
         context = {'documentosSubidos': documentos_subidos, 'docsExitosos': False, 'post': False}
         return render(request, 'documentosCarga.html', context)
-          
+
+
+@token_required    
 @csrf_exempt
 def list_docs_id(request,docId):
     if request.method=="GET":
@@ -221,6 +229,7 @@ def list_docs_id(request,docId):
         documentoCarga = serializers.serialize('json', [documentoCarga_dto,])
         return HttpResponse(documentoCarga, 'application/json')
 
+@token_required
 @csrf_exempt
 # Funcion para la pagina de inicio de los documentos
 def indexDocumentos(request):
