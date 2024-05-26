@@ -49,7 +49,7 @@ def indexDocumentos(request):
             print("token post: " +request.session["user_token"])
             return HttpResponse(status=200)
         else:
-            return JsonResponse({"error": "Token not found"}, status=400)
+            return redirect("http://35.184.109.166:8080/loginPage")
     elif request.method == "GET":
         token = request.GET.get("token")
         if token:
@@ -57,7 +57,7 @@ def indexDocumentos(request):
             print("token get: " +request.session["user_token"])
             return render(request, 'indexDocumentos.html', context={"loggeado": True, "token": token})
         else:
-            return JsonResponse({"error": "Token not found"}, status=400)
+            return redirect("http://35.184.109.166:8080/loginPage")
         
 
 
