@@ -44,6 +44,7 @@ def indexDocumentos(request):
     if request.method == "POST":
         print(request.POST)
         # request.session["user_token"] = request.POST["token"]
+        return HttpResponse("cargo")
     else:
         return render(request, 'indexDocumentos.html')
 
