@@ -42,16 +42,15 @@ def file_list(request):
 
 
 @csrf_exempt
-# @token_required
+@token_required
 def list_docs(request):
     
     docsExitosos = False
 
     if request.method == 'POST':
 
-        # integ = revisarIntegridad(request) == 1
-        # print("Integridad = " , integ)
-        integ = 1
+        integ = revisarIntegridad(request) == 1
+        print("Integridad = " , integ)
         if(integ == 1):
             
             
